@@ -1,4 +1,4 @@
-package java.com.eggtimer.model;
+package com.eggtimer.model;
 
 public class Timer {
 
