@@ -29,7 +29,7 @@ public class TimerScreen extends VBox {
         Button resetButton = new Button ("RESET");
 
         startButton.setOnAction(e -> {
-            startTimer();
+            startTimer(app);
             startButton.setText("CONTINUE");
         });
 
@@ -51,7 +51,7 @@ public class TimerScreen extends VBox {
         );
     }
 
-    private void startTimer() {
+    private void startTimer(EggTimerApp app) {
 
         timeline = new Timeline(
             new KeyFrame(
@@ -66,6 +66,7 @@ public class TimerScreen extends VBox {
 
                     if (timer.isFinished()) {
                         timeline.stop();
+                        app.showPauseScreen();
                     }
                 }
             )

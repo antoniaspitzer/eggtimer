@@ -2,6 +2,7 @@ package com.eggtimer;
 
 import com.eggtimer.ui.StartScreen;
 import com.eggtimer.ui.TimerScreen;
+import com.eggtimer.ui.PauseScreen;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -33,6 +34,14 @@ public class EggTimerApp extends Application {
 
         Scene scene = new Scene(timerScreen, 640, 480);
 
+        stage.setScene(scene);
+    }
+
+    public void showPauseScreen() {
+        PauseScreen pauseScreen = new PauseScreen(this);
+
+        Scene scene = new Scene(pauseScreen, 640, 480);
+        
         stage.setScene(scene);
     }
 

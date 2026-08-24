@@ -1,3 +1,4 @@
+com\eggtimer\ui\PauseScreen.class
 com\eggtimer\ui\StartScreen.class
 com\eggtimer\model\Timer.class
 com\eggtimer\ui\TimerScreen.class
