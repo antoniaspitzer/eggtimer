@@ -1,5 +1,7 @@
+com\eggtimer\model\Timer.class
+com\eggtimer\minigame\SnakeMiniGame$Tile.class
+com\eggtimer\EggTimerApp.class
 com\eggtimer\ui\PauseScreen.class
 com\eggtimer\ui\StartScreen.class
-com\eggtimer\model\Timer.class
 com\eggtimer\ui\TimerScreen.class
-com\eggtimer\EggTimerApp.class
+com\eggtimer\minigame\SnakeMiniGame.class

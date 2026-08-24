@@ -1,4 +1,4 @@
-package com.pocketpet.minigame;
+package com.eggtimer.minigame;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -76,19 +76,6 @@ public class SnakeMiniGame extends StackPane {
 
     private void createUI() {
 
-        // Frame
-        Image frameImage = new Image(
-                getClass()
-                        .getResource("/images/frame.png")
-                        .toExternalForm()
-        );
-
-        ImageView frame = new ImageView(frameImage);
-        frame.setSmooth(false);
-        frame.setFitWidth(640);
-        frame.setFitHeight(480);
-
-
         // Game board
         gameBoard = new Pane();
 
@@ -149,7 +136,6 @@ public class SnakeMiniGame extends StackPane {
 
 
         getChildren().addAll(
-                frame,
                 gameBoard,
                 scoreLabel,
                 infoLabel
