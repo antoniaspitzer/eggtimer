@@ -18,6 +18,10 @@ public class Timer {
         return minutes;
     }
 
+    public void resetTimer() {
+        this.remainingSeconds = minutes * 60;
+    }
+
     public void tick() {
         if (remainingSeconds > 0) {
             remainingSeconds--;

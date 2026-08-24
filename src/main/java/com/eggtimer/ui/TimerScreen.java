@@ -26,6 +26,7 @@ public class TimerScreen extends VBox {
 
         Button startButton = new Button("START");
         Button stopButton = new Button ("PAUSE");
+        Button resetButton = new Button ("RESET");
 
         startButton.setOnAction(e -> {
             startTimer();
@@ -36,10 +37,17 @@ public class TimerScreen extends VBox {
             stopTimer();
         });
 
+        resetButton.setOnAction(e -> {
+            stopTimer();
+            timer.resetTimer();
+            timerLabel.setText(formatTime(timer.getRemainingSeconds()));
+        });
+
         getChildren().addAll(
             timerLabel,
             startButton,
-            stopButton
+            stopButton,
+            resetButton
         );
     }
 
