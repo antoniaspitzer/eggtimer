@@ -28,8 +28,8 @@ public class EggTimerApp extends Application {
         stage.setScene(scene);
     }
 
-    public void showTimerScreen() {
-        TimerScreen timerScreen = new TimerScreen(this);
+    public void showTimerScreen(int minutes) {
+        TimerScreen timerScreen = new TimerScreen(this, minutes);
 
         Scene scene = new Scene(timerScreen, 640, 480);
 

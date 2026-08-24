@@ -16,23 +16,30 @@ public class TimerScreen extends VBox {
     private Label timerLabel;
     private Timeline timeline;
 
-    public TimerScreen(EggTimerApp app) {
+    public TimerScreen(EggTimerApp app, int minutes) {
 
-        timer = new Timer(25);
+        timer = new Timer(minutes);
 
         timerLabel = new Label(
             formatTime(timer.getRemainingSeconds())
         );
 
         Button startButton = new Button("START");
+        Button stopButton = new Button ("PAUSE");
 
         startButton.setOnAction(e -> {
             startTimer();
+            startButton.setText("CONTINUE");
+        });
+
+        stopButton.setOnAction(e -> {
+            stopTimer();
         });
 
         getChildren().addAll(
             timerLabel,
-            startButton
+            startButton,
+            stopButton
         );
     }
 
@@ -59,6 +66,10 @@ public class TimerScreen extends VBox {
         timeline.setCycleCount(Timeline.INDEFINITE);
 
         timeline.play();
+    }
+
+    private void stopTimer() {
+        timeline.stop();
     }
 
     private String formatTime(int seconds) {

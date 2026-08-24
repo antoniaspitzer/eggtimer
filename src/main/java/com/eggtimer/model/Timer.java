@@ -3,13 +3,19 @@ package com.eggtimer.model;
 public class Timer {
 
     private int remainingSeconds;
+    private int minutes;
 
     public Timer(int minutes) {
         this.remainingSeconds = minutes * 60;
+        this.minutes = minutes;
     }
 
     public int getRemainingSeconds() {
         return remainingSeconds;
+    }
+
+    public int getMinutes() {
+        return minutes;
     }
 
     public void tick() {
