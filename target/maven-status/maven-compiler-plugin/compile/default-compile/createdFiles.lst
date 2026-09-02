@@ -5,3 +5,5 @@ com\eggtimer\ui\PauseScreen.class
 com\eggtimer\ui\StartScreen.class
 com\eggtimer\ui\TimerScreen.class
 com\eggtimer\minigame\SnakeMiniGame.class
+Data.class
+Egg.class
