@@ -24,9 +24,9 @@ public class SnakeMiniGame extends StackPane {
     private static final int TILE_SIZE = 20;
     private static final int MAX_SCORE = 5;
 
-    private static final Color SNAKE_HEAD_COLOR = Color.web("#E88FB3");
-    private static final Color SNAKE_BODY_COLOR = Color.web("#F2A9C7");
-    private static final Color FOOD_COLOR = Color.web("#E85D8C");
+    private static final Color SNAKE_HEAD_COLOR = Color.web("#dec349");
+    private static final Color SNAKE_BODY_COLOR = Color.web("#f5e291");
+    private static final Color FOOD_COLOR = Color.web("#867114");
 
     private class Tile {
         int x, y;
@@ -95,8 +95,8 @@ public class SnakeMiniGame extends StackPane {
         );
 
         gameBoard.setStyle(
-                "-fx-background-color: #FFD6E7;" +
-                "-fx-border-color: #D96A99;" +
+                "-fx-background-color: #fff3bb;" +
+                "-fx-border-color: #8c6d0f;" +
                 "-fx-border-width: 3px;"
         );
 
@@ -105,12 +105,12 @@ public class SnakeMiniGame extends StackPane {
         scoreLabel = new Label("0 / " + MAX_SCORE);
 
         scoreLabel.setStyle("""
-                -fx-text-fill: #C94F82;
+                -fx-text-fill: #8c6d0f;
                 -fx-font-size: 22px;
                 -fx-font-weight: bold;
-                -fx-background-color: #FFEAF3;
+                -fx-background-color: #fff3bb;
                 -fx-padding: 5px 15px;
-                -fx-border-color: #D96A99;
+                -fx-border-color: #8c6d0f;
                 -fx-border-width: 2px;
                 """);
 
@@ -124,7 +124,7 @@ public class SnakeMiniGame extends StackPane {
         infoLabel = new Label("Use the arrow keys!");
 
         infoLabel.setStyle("""
-                -fx-text-fill: #C94F82;
+                -fx-text-fill: #8c6d0f;
                 -fx-font-size: 14px;
                 -fx-font-weight: bold;
                 """);
