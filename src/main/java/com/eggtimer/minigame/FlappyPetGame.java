@@ -153,6 +153,40 @@ public class FlappyPetGame extends StackPane {
         draw();
     }
 
+    private void startGameLoop() {
+
+        gameLoop = new Timeline(
+            new KeyFrame(
+                Duration.millis(120),
+                event -> {
+                    
+                    if (gameStarted) {
+                        move();
+                        draw();
+                    }
+                }
+            )
+        );
+
+        gameLoop.setCycleCount(Timeline.INDEFINITE);
+        gameLoop.play();
+    }
+
+    private void setupKeyboard() {
+
+        setOnKeyPressed(event -> {
+            
+            KeyCode key = event.getCode();
+
+            if (key == KeyCode.space) {
+                jump();
+            }
+
+            gameStarted = true;
+            infoLabel.setText("");
+        });
+    }
+
 }
 
 
