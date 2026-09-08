@@ -5,6 +5,7 @@ import com.eggtimer.ui.TimerScreen;
 import com.eggtimer.ui.PauseScreen;
 
 import com.eggtimer.minigame.SnakeMiniGame;
+import com.eggtimer.minigame.FlappyPetGame;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -40,7 +41,11 @@ public class EggTimerApp extends Application {
     }
 
     public void showPauseScreen() {
-        PauseScreen pauseScreen = new PauseScreen(this, () -> {showSnakeMiniGame();});
+        PauseScreen pauseScreen = new PauseScreen(
+            this, 
+            () -> {showSnakeMiniGame();},
+            () -> {showFlappyPetGame();}
+        );
 
         Scene scene = new Scene(pauseScreen, 640, 480);
         
@@ -63,6 +68,23 @@ public class EggTimerApp extends Application {
 
         // Wichtig für die Pfeiltasten!
         snakeMiniGame.requestFocus();
+    }
+
+    public void showFlappyPetGame() {
+        FlappyPetGame flappyPetGame = 
+                    new FlappyPetGame(() -> {
+                        showPauseScreen();
+                    });
+
+        Scene scene = new Scene(
+                flappyPetGame,
+                640,
+                480
+        );
+
+        stage.setScene(scene);
+
+        flappyPetGame.requestFocus();
     }
 
     public static void main(String[] args) {

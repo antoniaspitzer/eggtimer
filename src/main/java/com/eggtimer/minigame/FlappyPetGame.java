@@ -39,6 +39,7 @@ public class FlappyPetGame extends StackPane {
     private class Wall {
         int x;
         int gapY;
+        boolean scored;
 
         Wall(int x, int gapY) {
             this.x = x;
@@ -59,7 +60,6 @@ public class FlappyPetGame extends StackPane {
 
     private boolean gameOver;
     private boolean gameStarted;
-    private boolean scored;
 
     private Pane gameBoard;
     private Label scoreLabel;
@@ -220,6 +220,14 @@ public class FlappyPetGame extends StackPane {
         // bottom collision 
         if (flappyBird.y >= BOARD_HEIGHT / TILE_SIZE - 1) {
             gameOver = true;
+
+            stopGame();
+
+            infoLabel.setText("Ooops! Try again!");
+
+            restartAfterDelay();
+
+            return;
         }
 
         // move the wallls
@@ -244,7 +252,7 @@ public class FlappyPetGame extends StackPane {
             return;
         }
 
-        velocityY = -3;
+        velocityY = -2;
     }
 
     private void placeWall() {
@@ -309,6 +317,13 @@ public class FlappyPetGame extends StackPane {
                     flappyBird.y > wall.gapY + 2
                 ) {
                     gameOver = true;
+                    stopGame();
+
+                    infoLabel.setText("Ooops! Try again!");
+
+                    restartAfterDelay();
+
+                    return;
                 }
             }
         }
@@ -330,6 +345,62 @@ public class FlappyPetGame extends StackPane {
                 updateScore();
             }
         }
+    }
+
+    private void finishGame() {
+
+        stopGame();
+
+        gameOver = true;
+
+        if (onGameFinished != null) {
+            onGameFinished.run();
+        }
+    }
+
+
+    private void stopGame() {
+
+        if (gameLoop != null) {
+            gameLoop.stop();
+        }
+    }
+
+
+    private void restartAfterDelay() {
+
+        Timeline restartTimer = new Timeline(
+                new KeyFrame(
+                        Duration.seconds(1.5),
+                        event -> restartGame()
+                )
+        );
+
+        restartTimer.setCycleCount(1);
+        restartTimer.play();
+    }
+
+    private void restartGame() {
+
+        flappyBird = new Tile(12, 9);
+        walls.clear();
+
+        velocityY = 0;
+
+        score = 0;
+        gameOver = false;
+        gameStarted = false;
+
+        placeWall();
+        updateScore();
+
+        infoLabel.setText("Use the space bar!");
+
+        draw();
+
+        startGameLoop();
+
+        requestFocus();
     }
 }
 

@@ -11,7 +11,7 @@ import javafx.scene.control.Button;
 
 
 public class PauseScreen extends AnchorPane {
-    public PauseScreen(EggTimerApp app, Runnable onPlay) {
+    public PauseScreen(EggTimerApp app, Runnable onSnake, Runnable onFlappy) {
 
         // BACKGROUND
 
@@ -34,7 +34,13 @@ public class PauseScreen extends AnchorPane {
         Button playSnake = new Button("Play Snake");
 
         playSnake.setOnAction(e -> {
-            onPlay.run();
+            onSnake.run();
+        });
+
+        Button playFlap = new Button("Play FlappyBird");
+
+        playFlap.setOnAction(e -> {
+            onFlappy.run();
         });
 
         // LAYOUT
@@ -45,11 +51,16 @@ public class PauseScreen extends AnchorPane {
         AnchorPane.setTopAnchor(playSnake, 240.0);
         AnchorPane.setLeftAnchor(playSnake, 270.0);
 
+        AnchorPane.setTopAnchor(playFlap, 240.0);
+        AnchorPane.setLeftAnchor(playFlap, 300.0);
+
         getChildren().addAll(
             frame,
 
             label,
-            playSnake
+            playSnake,
+            playFlap
         );
     }
+    
 }
