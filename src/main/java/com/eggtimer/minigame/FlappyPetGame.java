@@ -250,6 +250,51 @@ public class FlappyPetGame extends StackPane {
     }
 
     private void draw() {
+        gameBoard.getChildren().clear();
+
+        // PET
+        Rectangle bird = new Rectangle(
+            TILE_SIZE,
+            TILE_SIZE,
+            FLAPPY_BIRD_COLOR
+        );
+
+        bird.setX(flappyBird.x * TILE_SIZE);
+        bird.setY(flappyBird.y * TILE_SIZE);
+
+        gameBoard.getChildren().add(bird);
+
+        // WALLSS
+        for (Wall wall : walls) {
+            // top wall
+            for (int y = 0; y < wall.gapY; y++) {
+
+                Rectangle block = new Rectangle(
+                    TILE_SIZE,
+                    TILE_SIZE,
+                    WALL_COLOR
+                );
+
+                block.setX(wall.x * TILE_SIZE);
+                block.setY(y * TILE_SIZE);
+
+                gameBoard.getChildren().add(block);
+            }
+
+            // botttom wall
+            for (int y = wall.gapY + 3; y < BOARD_HEIGHT / TILE_SIZE; y++) {
+
+                Rectangle block = new Rectangle(TILE_SIZE, TILE_SIZE, WALL_COLOR);
+
+                block.setX(wall.x * TILE_SIZE);
+                block.setY(y * TILE_SIZE);
+
+                gameBoard.getChildren().add(block);
+            }
+        }
+    }
+    
+    private void checkCollision() {
         
     }
 }
