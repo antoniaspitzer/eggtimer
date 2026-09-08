@@ -219,6 +219,16 @@ public class FlappyPetGame extends StackPane {
             gameOver = true;
         }
 
+        // move the wallls
+        for (Wall wall : walls) {
+            wall.x --;
+        }
+
+        if (walls.isEmpty() || walls.get(walls.size() - 1).x < 15) {
+            placeWall();
+        }
+
+        walls.removeIf(wall -> wall.x < -2);
     }
 
     private void jump() {
@@ -230,7 +240,18 @@ public class FlappyPetGame extends StackPane {
         velocityY = -3;
     }
 
+    private void placeWall() {
+        int gapY = 3 + random.nextInt(5);
 
+        walls.add(new Wall(
+            BOARD_WIDTH / TILE_SIZE,
+            gapY
+        ));
+    }
+
+    private void draw() {
+        
+    }
 }
 
 
