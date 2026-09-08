@@ -43,11 +43,12 @@ public class FlappyPetGame extends StackPane {
         Wall(int x, int gapY) {
             this.x = x;
             this.gapY = gapY;
+            this.scored = false;
         }
     }
 
     private Tile flappyBird;
-    private ArrayList<Wall> wall;
+    private ArrayList<Wall> walls;
 
     private Random random;
     private Timeline gameLoop;
@@ -58,6 +59,7 @@ public class FlappyPetGame extends StackPane {
 
     private boolean gameOver;
     private boolean gameStarted;
+    private boolean scored;
 
     private Pane gameBoard;
     private Label scoreLabel;
@@ -146,10 +148,10 @@ public class FlappyPetGame extends StackPane {
     }
 
     private void initializeGame() {
+        random = new Random();
 
         flappyBird = new Tile(12, 9);
-
-        wall = new ArrayList<>();
+        walls = new ArrayList<>();
 
         velocityX = 0;
         velocityY = 0;
@@ -167,7 +169,7 @@ public class FlappyPetGame extends StackPane {
 
         gameLoop = new Timeline(
             new KeyFrame(
-                Duration.millis(120),
+                Duration.millis(200),
                 event -> {
                     
                     if (gameStarted) {
@@ -188,12 +190,13 @@ public class FlappyPetGame extends StackPane {
             
             KeyCode key = event.getCode();
 
-            if (key == KeyCode.space) {
+            if (key == KeyCode.SPACE) {
+                if (!gameStarted) {
+                    gameStarted = true;
+                    infoLabel.setText("");
+                }
                 jump();
             }
-
-            gameStarted = true;
-            infoLabel.setText("");
         });
     }
 
@@ -206,7 +209,7 @@ public class FlappyPetGame extends StackPane {
         velocityY += 1;
 
         // move birdb
-        velocityX += velocityY;
+        flappyBird.y += velocityY;
 
         // jump
         if (flappyBird.y < 0) {
@@ -221,14 +224,18 @@ public class FlappyPetGame extends StackPane {
 
         // move the wallls
         for (Wall wall : walls) {
-            wall.x --;
+            wall.x--;
         }
+
+        checkScore();
 
         if (walls.isEmpty() || walls.get(walls.size() - 1).x < 15) {
             placeWall();
         }
 
         walls.removeIf(wall -> wall.x < -2);
+
+        checkCollision();
     }
 
     private void jump() {
@@ -295,7 +302,34 @@ public class FlappyPetGame extends StackPane {
     }
     
     private void checkCollision() {
-        
+        for (Wall wall : walls) {
+            if (flappyBird.x == wall.x) {
+                if(
+                    flappyBird.y < wall.gapY ||
+                    flappyBird.y > wall.gapY + 2
+                ) {
+                    gameOver = true;
+                }
+            }
+        }
+    }
+
+    private void updateScore() {
+        scoreLabel.setText(score + " / " + MAX_SCORE);
+    }
+
+    private void checkScore() {
+
+        for (Wall wall : walls) {
+
+            if (!wall.scored && wall.x < flappyBird.x) {
+
+                wall.scored = true;
+
+                score++;
+                updateScore();
+            }
+        }
     }
 }
 
