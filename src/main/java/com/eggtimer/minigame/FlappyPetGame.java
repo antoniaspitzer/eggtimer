@@ -139,7 +139,7 @@ public class FlappyPetGame extends StackPane {
 
         flappyBird = new Tile(12, 9);
 
-        wall = new ArrayList<>(5,5);
+        wall = new ArrayList<>();
 
         velocityX = 0;
         velocityY = 0;
@@ -186,6 +186,32 @@ public class FlappyPetGame extends StackPane {
             infoLabel.setText("");
         });
     }
+
+    private void move() {
+        if (gameOver) {
+            return;
+        }
+
+        // gravity
+        velocityY += 1;
+
+        // move birdb
+        velocityX += velocityY;
+
+        // jump
+        if (flappyBird.y < 0) {
+            flappyBird.y = 0;
+            velocityY = 0;
+        }
+
+        // bottom collision 
+        if (flappyBird.y >= BOARD_HEIGHT / TILE_SIZE - 1) {
+            gameOver = true;
+        }
+
+    }
+
+
 
 }
 
