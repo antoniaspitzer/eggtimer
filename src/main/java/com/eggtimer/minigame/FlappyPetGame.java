@@ -36,8 +36,18 @@ public class FlappyPetGame extends StackPane {
         }
     }
 
+    private class Wall {
+        int x;
+        int gapY;
+
+        Wall(int x, int gapY) {
+            this.x = x;
+            this.gapY = gapY;
+        }
+    }
+
     private Tile flappyBird;
-    private ArrayList<Tile> wall;
+    private ArrayList<Wall> wall;
 
     private Random random;
     private Timeline gameLoop;
@@ -211,6 +221,14 @@ public class FlappyPetGame extends StackPane {
 
     }
 
+    private void jump() {
+
+        if (gameOver) {
+            return;
+        }
+
+        velocityY = -3;
+    }
 
 
 }
