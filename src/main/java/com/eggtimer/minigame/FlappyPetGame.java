@@ -24,8 +24,8 @@ public class FlappyPetGame extends StackPane {
     private static final int TILE_SIZE = 20;
     private static final int MAX_SCORE = 5;
 
-    private static final Color FLAPPY_BIRD_COLOR = Color.web("#E88FB3");
-    private static final Color WALL_COLOR = Color.web("#E85D8C");
+    private static final Color FLAPPY_BIRD_COLOR = Color.web("#8c6d0f");
+    private static final Color WALL_COLOR = Color.web("#8c6d0f");
 
     private class Tile {
         int x, y;
