@@ -343,6 +343,12 @@ public class FlappyPetGame extends StackPane {
 
                 score++;
                 updateScore();
+
+                // Highscore erreicht
+                if (score >= MAX_SCORE) {
+                    finishGame();
+                    return;
+                }
             }
         }
     }
