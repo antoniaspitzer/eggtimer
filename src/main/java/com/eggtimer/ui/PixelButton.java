@@ -1,4 +1,4 @@
-package com.pocketpet.ui;
+package com.eggtimer.ui;
 
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;

@@ -6,6 +6,7 @@ com\eggtimer\minigame\FlappyPetGame.class
 Data.class
 com\eggtimer\model\Timer.class
 com\eggtimer\minigame\FlappyPetGame$Tile.class
+com\eggtimer\ui\PixelButton.class
 com\eggtimer\ui\StartScreen.class
 com\eggtimer\ui\TimerScreen.class
 com\eggtimer\minigame\SnakeMiniGame.class

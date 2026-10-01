@@ -2,7 +2,6 @@ package com.eggtimer.ui;
 
 import com.eggtimer.EggTimerApp;
 
-import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
 import javafx.scene.image.Image;
@@ -34,7 +33,7 @@ public class StartScreen extends AnchorPane {
         Label welcome = new Label("Welcome to EggTimer!\n\nChoose your Focus Time");
 
         Spinner<Integer> minutesSpinner = new Spinner<>(1, 60, 25);
-        Button startButton = new Button("OK");
+        PixelButton startButton = new PixelButton("OK");
 
         startButton.setOnAction(e -> {
             app.showTimerScreen(minutesSpinner.getValue());
